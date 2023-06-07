@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add or Remove Classes</title>
+    <style>
+      table {
+        border: 1px solid black;
+        padding: 5px;
+      }
+      td {
+        border: 1px solid black;
+        padding: 5px;
+      }
+      th {
+        border: 1px solid black;
+        padding: 5px;
+      }
+      table {
+        width: 50%;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="classTable">
+      <tr>
+        <th>Class Name</th>
+        <th>Toggle Selection</th>
+      </tr>
+    </table>
+
+    <button id="addClass">Add Class</button>
+    <button id="removeClass">Remove Selected Class</button>
+
+    <script>
+      let classes = [];
+
+      document
+        .getElementById("addClass")
+        .addEventListener("click", function () {
+          let className = prompt("Please enter the class name:");
+          if (className) {
+            classes.push({ name: className, isSelected: false });
+            renderTable();
+          }
+        });
+
+      document
+        .getElementById("removeClass")
+        .addEventListener("click", function () {
+          classes = classes.filter((c) => !c.isSelected);
+          renderTable();
+        });
+
+      function renderTable() {
+        const table = document.getElementById("classTable");
+        table.innerHTML =
+          "<tr><th>Class Name</th><th>Toggle Selection</th></tr>";
+
+        classes.forEach((c, i) => {
+          let row = table.insertRow(-1);
+          let cell1 = row.insertCell(0);
+          let cell2 = row.insertCell(1);
+
+          cell1.innerHTML = c.name;
+          cell2.innerHTML = `<input type="checkbox" id="class_${i}" ${
+            c.isSelected ? "checked" : ""
+          }>`;
+          cell2.querySelector("input").addEventListener("click", function () {
+            classes[i].isSelected = !classes[i].isSelected;
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
