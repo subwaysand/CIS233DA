@@ -1,0 +1,32 @@
+#small {
+  display: flex;
+}
+
+body {
+  background-color: rgb(15, 15, 148);
+  color: white;
+}
+
+#weatherInfoS {
+  background-color: gray;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  margin-top: 8px;
+  width: 540px;
+}
+p {
+  width: 550px;
+}
+.paraImg {
+  width: 550px;
+}
+select {
+  width: 540px;
+}
+#medium {
+  display: none;
+}
+#large {
+  display: none;
+}
