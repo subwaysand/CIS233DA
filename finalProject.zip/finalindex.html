@@ -1,0 +1,423 @@
+<!--PLEASE NOTE  The drop down is supposed to feed into the weather fetch function to get weather, but chatGPT says it isn't working likely due to 
+a security thing and thus the way it works is to manually type in the selection.-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Tale of 5 Cities</title>
+  </head>
+  <body>
+    <select id="city" onchange="setCity(this)">
+      <option value="Seattle">Seattle</option>
+      <option value="Tempe">Tempe</option>
+      <option value="Copenhagen">Copenhagen</option>
+      <option value="Dana Point">Dana Point</option>
+      <option value="Dutch Harbor">Dutch Harbor</option>
+    </select>
+    <div id="weatherbox" style="height: 450px">
+      <input id="city-input" type="text" placeholder="Enter a city" />
+      <button onclick="fetchWeather(document.getElementById('city'))">
+        Get Weather
+      </button>
+      <div id="weather-data">
+        <!-- Weather data will appear here -->
+      </div>
+    </div>
+
+    <div id="cityHolder">
+      <div id="city0">
+        Seattle
+        <div id="0fact"></div>
+
+        <img
+          src="Midterm/images/smallimages/seattleSkylineSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/seattleSkylineSmall.jpg  600w,
+            Midterm/images/lrgImages/seattleSkylineLarge.png   1000w
+          "
+          class="cityPic1"
+          alt="Seattle Skyline" />
+        <p>
+          Seattle's beautiful skyline has changed over the years, becoming less
+          cozy and more metally. However, the Space Needle stands tall.
+        </p>
+        <img
+          src="Midterm/images/smallimages/seattleHouseSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/seattleHouseSmall.jpg  600w,
+            Midterm/images/lrgImages/seattleHouseLarge.png   1000w
+          "
+          class="cityPic2"
+          alt="Seattle Houses" />
+        <p>
+          The houses in Seattle are primarily 1-2 stories, and most are built on
+          a hill of some grade. Interestingly, the basement is often
+          ground-level at some point.
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/seattleNatureSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/seattleNatureSmall.jpg  600w,
+            Midterm/images/lrgImages/seattleNatureLarge.png   1000w
+          "
+          class="cityPic3"
+          alt="Seattle Nature" />
+        <p>
+          One thing I miss about Seattle is the beautiful plants. There are nice
+          green things all around, and the morning smell is godly.
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/seatttleIndustrySmall.jpg"
+          srcset="
+            Midterm/images/smallimages/seatttleIndustrySmall.jpg  600w,
+            Midterm/images/lrgImages/seattleIndustryLarge.png    1000w
+          "
+          class="cityPic4"
+          alt="Seattle Industry" />
+        <p>
+          Amazon has infected the city like a corporate cancer coated in chrome,
+          as shown in this sphere picture.
+        </p>
+        <div id="vid1">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/DwKHJo1TBtE"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+      <div id="city1" style="display: none">
+        Tempe
+        <div id="weather-data">
+          <!-- Weather data will appear here -->
+        </div>
+        <div id="1fact"></div>
+        <img
+          src="Midterm/images/smallimages/tempeSkylineSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/tempeSkylineSmall.jpg  600w,
+            Midterm/images/lrgImages/tempeSkylineLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Tempe Skyline" />
+        <p>
+          Tempe is most likely short for temperature, as this place is hot
+          enough to fry an egg on the ground (or at least the brains of its
+          residents).
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/tempeHousesSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/tempeHousesSmall.jpg  600w,
+            Midterm/images/lrgImages/tempeHousesLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Tempe Houses" />
+        <p>
+          The houses here are primarily overpriced apartment buildings that look
+          like this. Don't be fooled, behind faux adobe is just cheap Canadian
+          2x4s and drywall akin to paper mache.
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/tempeNatureSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/tempeNatureSmall.jpg  600w,
+            Midterm/images/lrgImages/tempeNatureLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Tempe Nature" />
+        <p>
+          This is an example of the nature here. Though unsuspecting, many
+          lizards, squirrels, and bugs live here on A Mountain (aka Hayden
+          Butte).
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/tempeIndustrySmall.jpg"
+          srcset="
+            Midterm/images/smallimages/tempeIndustrySmall.jpg  600w,
+            Midterm/images/lrgImages/tempeIndustryLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Tempe Industry" />
+        <p>
+          Sun Devils are the main economic actors in this town, as they populate
+          the games and bars in masses. Go Devils GOOOOO!
+        </p>
+        <div id="vid2">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/8VYbsz5szzw"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+      <div id="city2" style="display: none">
+        Copenhagen
+        <div id="weather-data">
+          <!-- Weather data will appear here -->
+        </div>
+        <div id="2fact"></div>
+        <img
+          src="Midterm/images/smallimages/copenhagenSkylineSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/copenhagenSkylineSmall.jpg  600w,
+            Midterm/images/lrgImages/copenhagenSkylineLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Copenhagen Skyline" />
+        <p>
+          Copenhagen is a shining example of hedonistic sustainability, and a
+          beautiful mix of the past architecture with the ideas that inspire
+          tomorrow.
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/copenhagenHousesSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/copenhagenHousesSmall.jpg  600w,
+            Midterm/images/lrgImages/copenhagenHousesLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Copenhagen Houses" />
+        <p>
+          The iconic colorful houses that overlook the canals that are so
+          beautifully associated with the aesthetic of this lovely city.
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/copenhagenNatureSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/copenhagenNatureSmall.jpg  600w,
+            Midterm/images/lrgImages/copenhagenNatureLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Copenhagen Nature" />
+        <p>
+          Nature is an important part of life here, as there is a high value
+          placed on open natural spaces for everyone to enjoy.
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/copenhagenIndustrySmall.jpg"
+          srcset="
+            Midterm/images/smallimages/copenhagenIndustrySmall.jpg  600w,
+            Midterm/images/lrgImages/copenhagenIndustryLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Copenhagen Industry" />
+        <p>
+          This blocky building is BLOX, a setting for urban life, architecture,
+          and sustainability. Copenhagen has been named the World Capital of
+          Architecture by UNESCO-UIA.
+        </p>
+        <div id="vid3">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/yHZlNfWuA7g"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+      <div id="city3" style="display: none">
+        Dana Point
+        <div id="weather-data">
+          <!-- Weather data will appear here -->
+        </div>
+        <div id="3fact"></div>
+        <img
+          src="Midterm/images/smallimages/danapointSkylineSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/danapointSkylineSmall.jpg  600w,
+            Midterm/images/lrgImages/danapointSkylineLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Dana Point Skyline" />
+        <p>
+          Dana Point is a place that I hold fond memories of, as do many. This
+          super beachy paridise is basically always perfect for a day at the
+          beach, or just outside in general.
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/danapointHousesSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/danapointHousesSmall.jpg  600w,
+            Midterm/images/lrgImages/danapointHousesLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Dana Point Houses" />
+        <p>
+          The iconic houses here are built into the cliffs and unsurprisingly
+          require a lot of maintainence and architectural sorcery (which the
+          budget seems to permit).
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/danapointNatureSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/danapointNatureSmall.jpg  600w,
+            Midterm/images/lrgImages/danapointNatureLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Dana Point Nature" />
+        <p>
+          One could easily interpret the natural landscape to be golf courses,
+          which are all impeccably maintained. These can be found just a
+          chip-shot from the immaculate tide.
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/danapointIndustrySmall.jpg"
+          srcset="
+            Midterm/images/smallimages/danapointIndustrySmall.jpg  600w,
+            Midterm/images/lrgImages/danapointIndustryLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Dana Point Industry" />
+        <p>
+          Industry here centers mostly around the ocean town and its unmatched
+          beauty. Pictured is the Ocean Institute where Stephen Hillenburg got
+          his feet wet in educating visitors on the wonderful world of tide
+          pools.
+        </p>
+        <div id="vid4">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/QntviMRUx5Q"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+      <div id="city4" style="display: none">
+        Dutch Harbor
+        <div id="4fact"></div>
+        <img
+          src="Midterm/images/smallimages/dutchharborSkylineSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/dutchharborSkylineSmall.jpg  600w,
+            Midterm/images/lrgImages/dutchharborSkylineLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Dutch Harbor Skyline" />
+        <p>
+          Dutch Harbor, located in Unalaska, AK is a fishing town that is quite
+          remote. It is on the 20th closest landmass to Russian territory, and
+          points toward the Bering Sea.
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/dutchharborHousesSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/dutchharborHousesSmall.jpg  600w,
+            Midterm/images/lrgImages/dutchharborHousesLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Dutch Harbor Houses" />
+        <p>
+          These houses are not IN the harbor, but they are an example of what
+          Alaskan houses look like. Steep metal roofs and very good insulation
+          are a must up there.
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/dutchharborNatureSmall.jpg"
+          srcset="
+            Midterm/images/smallimages/dutchharborNatureSmall.jpg  600w,
+            Midterm/images/lrgImages/dutchharborNatureLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Dutch Harbor Nature" />
+        <p>
+          The coastal biome here is absolutely breathtaking, as the tall pine
+          trees grow right up to the water in many cases. There are lots of
+          little islands surrounded by water, and are mostly quite hilly.
+        </p>
+
+        <img
+          src="Midterm/images/smallimages/dutchharborIndustrySmall.jpg"
+          srcset="
+            Midterm/images/smallimages/dutchharborIndustrySmall.jpg  600w,
+            Midterm/images/lrgImages/dutchharborIndustryLarge.png   1000w
+          "
+          class="cityPic"
+          alt="Dutch Harbor Industry" />
+        <p>
+          You most likely heard of this town the way I did, as it is the home
+          base during King Crab season for the Deadliest Catch boats. This is
+          Sig Hansen's boat, in my opinion the coolest captain.
+        </p>
+        <div id="vid5">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/a9sJeNuphLU"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function setCity(obj) {
+        let cityId = obj.selectedIndex;
+        for (let y = 0; y < 6; y++) {
+          document.getElementById(`city${y}`).style.display = "none";
+          if (y == cityId) {
+            document.getElementById(`city${cityId}`).style.display = "inline";
+          }
+        }
+        fetchWeather(obj);
+      }
+
+      function fetchWeather(obj) {
+        let city = obj.options[obj.selectedIndex].value;
+        const apiKey = "fc49c842aa87427e812eb58b2c735a80";
+
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const weatherDiv = document.getElementById("weather-data");
+            weatherDiv.innerHTML = `
+                    <h2>${data.name}</h2>
+                    <img src="http://openweathermap.org/img/w/${
+                      data.weather[0].icon
+                    }.png" alt="${data.weather[0].description}">
+                    <p>Temperature: ${(data.main.temp - 273.15).toFixed(
+                      2
+                    )} °C</p>
+                    <p>High Temperature: ${(
+                      data.main.temp_max - 273.15
+                    ).toFixed(2)} °C</p>
+                    <p>Low Temperature: ${(data.main.temp_min - 273.15).toFixed(
+                      2
+                    )} °C</p>
+                    <p>Humidity: ${data.main.humidity}%</p>
+                `;
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </body>
+</html>

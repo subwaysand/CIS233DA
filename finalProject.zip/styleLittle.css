@@ -1,0 +1,10 @@
+* {
+  display: grid;
+  grid-template-areas:
+    "city"
+    "weatherbox"
+    "cityHolder";
+}
+#weatherbox {
+  height: 300px;
+}
